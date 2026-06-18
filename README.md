@@ -28,6 +28,8 @@ runbook is recommended for a first-time machine.
 | `macos/defaults.sh` | Opinionated macOS `defaults` (Finder, Dock, screenshots, trackpad…). |
 | `RUNBOOK.md` | Ordered fresh-Mac procedure + every gotcha + manual GUI steps. |
 | `MACHINE-NOTES.md` | Machine-specific deviations (curation, fixes) for exact reproduction. |
+| `brew-audit.sh` | Categorized inventory of `brew leaves` + overlap/drift report → `PACKAGES.md`. |
+| `PACKAGES.md` | Generated package catalog (run `brew-audit.sh` to refresh). |
 
 ## Relationship to dotfiles
 
