@@ -77,15 +77,15 @@ defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
 
 ###############################################################################
-log "Trackpad: tap to click + three-finger drag"
+log "Trackpad: tap to click"
 ###############################################################################
 defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-# Three-finger drag (accessibility gesture).
-defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true
+# NOTE: three-finger DRAG is intentionally NOT enabled — it conflicts with the
+# three-finger swipe-up for Mission Control (macOS makes them mutually exclusive,
+# bumping Mission Control to a four-finger swipe). Leave it off.
 
 ###############################################################################
 log "Safari: developer settings"
@@ -97,6 +97,15 @@ defaults write com.apple.Safari IncludeDevelopMenu -bool true 2>/dev/null || tru
 defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true 2>/dev/null || true
 defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true 2>/dev/null || true
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true 2>/dev/null || true
+
+###############################################################################
+log "Keyboard: free up Cmd-Space for Raycast (disable Spotlight shortcut)"
+###############################################################################
+# Symbolic hotkey 64 = "Show Spotlight search" (Cmd-Space). Setting enabled=0
+# frees Cmd-Space so Raycast can bind it. (65 = Finder search, Cmd-Opt-Space.)
+# NOTE: takes effect after logout/login — WindowServer loads these at login.
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 64 \
+  "{ enabled = 0; value = { parameters = ( 32, 49, 1048576 ); type = standard; }; }"
 
 ###############################################################################
 log "Restarting affected apps"

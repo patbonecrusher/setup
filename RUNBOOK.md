@@ -9,6 +9,41 @@ macOS config live in the chezmoi repo (`patbonecrusher/dotfiles`); this repo own
 
 ---
 
+## TL;DR
+
+```sh
+# 0. GUI first: sign into iCloud AND the Mac App Store (App Store BEFORE packages, or mas fails).
+
+# 1. Bootstrap (installs Xcode CLT, Homebrew, chezmoi+gh; clones dotfiles, no apply).
+mkdir -p ~/Projects && git clone https://github.com/patbonecrusher/setup ~/Projects/setup
+~/Projects/setup/bootstrap.sh                     # NOT with sudo
+
+# 2. Install everything — in a REAL terminal (TTY needed for sudo/Touch ID).
+chezmoi apply                                     # packages, casks, App Store apps, dotfiles, TouchID
+
+# 3. Toolchains.
+mise install                                      # python: MISE_PYTHON_COMPILE=1 mise install python@<v> if prebuilt fails
+
+# 4. GitHub + identity.
+gh auth login
+git config --global user.name  "Patrick Laplante"
+git config --global user.email "laplante.patrick@gmail.com"
+
+# 5. macOS defaults.
+~/Projects/setup/macos/defaults.sh
+
+# 6. Log out / back in, then the GUI follow-ups in §7.
+```
+
+Once the dotfiles fixes (Homebrew-bootstrap script + tap-trust) are pushed upstream, steps 1–2
+collapse into the chezmoi one-liner (still run in a TTY, still App-Store-signed-in first):
+
+```sh
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply patbonecrusher
+```
+
+---
+
 ## 0. Prerequisites 🖱️
 
 - Apple Silicon Mac, macOS up to date.
