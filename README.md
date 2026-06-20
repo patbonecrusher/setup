@@ -10,8 +10,8 @@ Homebrew → chezmoi) and the **runbook** of manual GUI steps and ordering gotch
 ## Quick start
 
 ```sh
-git clone https://github.com/patbonecrusher/setup ~/Projects/setup
-~/Projects/setup/bootstrap.sh        # foundation only (no packages installed yet)
+git clone https://github.com/patbonecrusher/setup ~/Projects/mac-setup/setup
+~/Projects/mac-setup/setup/bootstrap.sh        # foundation only (no packages installed yet)
 ```
 
 Then follow **[RUNBOOK.md](./RUNBOOK.md)** for the ordered steps (App Store sign-in,

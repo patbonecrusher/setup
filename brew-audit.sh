@@ -3,7 +3,7 @@
 # brew-audit.sh — categorized inventory of your Homebrew leaves, with an overlap
 # (redundant-tool) watch and a drift (installed-vs-declared) report. Read-only.
 #
-# Writes a Markdown catalog (default: ~/Projects/setup/PACKAGES.md) and prints a
+# Writes a Markdown catalog (default: ~/Projects/mac-setup/setup/PACKAGES.md) and prints a
 # short summary. Re-run anytime to re-snapshot.
 #
 # Usage:  ./brew-audit.sh [output.md]
@@ -13,7 +13,7 @@ set -uo pipefail
 eval "$(/opt/homebrew/bin/brew shellenv)" 2>/dev/null || true
 
 PKGYAML="${PKGYAML:-$HOME/.local/share/chezmoi/.chezmoidata/packages.yaml}"
-OUT="${1:-$HOME/Projects/setup/PACKAGES.md}"
+OUT="${1:-$HOME/Projects/mac-setup/setup/PACKAGES.md}"
 
 tmp=$(mktemp -d)
 trap 'rm -rf "$tmp"' EXIT

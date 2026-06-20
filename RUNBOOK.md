@@ -15,8 +15,8 @@ macOS config live in the chezmoi repo (`patbonecrusher/dotfiles`); this repo own
 # 0. GUI first: sign into iCloud AND the Mac App Store (App Store BEFORE packages, or mas fails).
 
 # 1. Bootstrap (installs Xcode CLT, Homebrew, chezmoi+gh; clones dotfiles, no apply).
-mkdir -p ~/Projects && git clone https://github.com/patbonecrusher/setup ~/Projects/setup
-~/Projects/setup/bootstrap.sh                     # NOT with sudo
+mkdir -p ~/Projects && git clone https://github.com/patbonecrusher/setup ~/Projects/mac-setup/setup
+~/Projects/mac-setup/setup/bootstrap.sh                     # NOT with sudo
 
 # 2. Install everything — in a REAL terminal (TTY needed for sudo/Touch ID).
 chezmoi apply                                     # packages, casks, App Store apps, dotfiles, TouchID
@@ -30,7 +30,7 @@ git config --global user.name  "Patrick Laplante"
 git config --global user.email "laplante.patrick@gmail.com"
 
 # 5. macOS defaults.
-~/Projects/setup/macos/defaults.sh
+~/Projects/mac-setup/setup/macos/defaults.sh
 
 # 6. Log out / back in, then the GUI follow-ups in §7.
 ```
@@ -54,8 +54,8 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply patbonecrusher
 ## 1. Bootstrap: Xcode CLT, Homebrew, chezmoi ⌨️
 
 ```sh
-git clone https://github.com/patbonecrusher/setup ~/Projects/setup   # or download bootstrap.sh
-~/Projects/setup/bootstrap.sh
+git clone https://github.com/patbonecrusher/setup ~/Projects/mac-setup/setup   # or download bootstrap.sh
+~/Projects/mac-setup/setup/bootstrap.sh
 ```
 
 Installs Xcode Command Line Tools (if missing), Homebrew (prompts for your **password**),
@@ -114,7 +114,7 @@ git config --global push.autoSetupRemote true
 ## 6. macOS system defaults ⌨️
 
 ```sh
-~/Projects/setup/macos/defaults.sh
+~/Projects/mac-setup/setup/macos/defaults.sh
 ```
 
 ## 7. Manual GUI follow-ups 🖱️
