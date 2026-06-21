@@ -53,6 +53,10 @@ defaults write com.apple.dock mru-spaces -bool false
 log "Screenshots"
 ###############################################################################
 mkdir -p "${HOME}/Screenshots"
+# Default destination: clipboard — Cmd-Shift-3/4 copy the capture instead of
+# writing a file. `location` below is the fallback for "Save to File" (the
+# Cmd-Shift-5 toolbar / explicit save).
+defaults write com.apple.screencapture target -string "clipboard"
 defaults write com.apple.screencapture location -string "${HOME}/Screenshots"
 defaults write com.apple.screencapture type -string "png"
 defaults write com.apple.screencapture disable-shadow -bool true
