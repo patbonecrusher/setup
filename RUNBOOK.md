@@ -72,7 +72,7 @@ ln -s setup/CLAUDE.md ~/Projects/mac-setup/CLAUDE.md
 
 ## 2. (Optional) Curate packages ⌨️
 
-Edit `~/.local/share/chezmoi/.chezmoidata/packages.yaml` and the `mas` list in
+Edit `~/Projects/mac-setup/dotfiles/.chezmoidata/packages.yaml` and the `mas` list in
 `.chezmoiscripts/run_onchange_before_install-homebrew-packages.sh.tmpl`. See
 [MACHINE-NOTES.md](./MACHINE-NOTES.md) for the exact prunes used on the M5 Pro.
 

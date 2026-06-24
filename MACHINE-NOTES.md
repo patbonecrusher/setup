@@ -2,7 +2,7 @@
 
 Deviations applied to the chezmoi source on THIS machine only (not committed to
 `patbonecrusher/dotfiles`). To reproduce this exact machine, apply these prunes to
-`~/.local/share/chezmoi` after `chezmoi init` and before `chezmoi apply`.
+`~/Projects/mac-setup/dotfiles` after `chezmoi init` and before `chezmoi apply`.
 
 ## Curation: container runtime → colima + lima
 
