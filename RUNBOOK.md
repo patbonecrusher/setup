@@ -62,6 +62,14 @@ Installs Xcode Command Line Tools (if missing), Homebrew (prompts for your **pas
 `chezmoi` + `gh`, then `chezmoi init patbonecrusher` (clones dotfiles source **without
 applying**). Do **not** run with `sudo`.
 
+The canonical `CLAUDE.md` (Claude Code project context) lives in this repo at
+`setup/CLAUDE.md`; Claude auto-loads it from the `mac-setup` root, so recreate the symlink
+once both repos are cloned:
+
+```sh
+ln -s setup/CLAUDE.md ~/Projects/mac-setup/CLAUDE.md
+```
+
 ## 2. (Optional) Curate packages ⌨️
 
 Edit `~/.local/share/chezmoi/.chezmoidata/packages.yaml` and the `mas` list in
