@@ -128,6 +128,19 @@ git config --global push.autoSetupRemote true
 ## 7. Manual GUI follow-ups 🖱️
 
 - **1Password** — open and sign in (unlocks credentials; optionally enable the SSH agent).
+- **Secretive** (SSH keys in the Secure Enclave) — manual, since `~/.ssh/config` is **not**
+  in the dotfiles repo (kept local; see `private_dot_ssh/` in the gitignore):
+  1. Launch Secretive → create a new key (generated in the Secure Enclave, never exported).
+  2. Recreate `~/.ssh/config` with the agent socket:
+     ```sh
+     mkdir -p ~/.ssh && cat > ~/.ssh/config <<'EOF'
+     Host *
+     	IdentityAgent ~/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+     EOF
+     ```
+  3. Copy the **public key** from Secretive and add it to GitHub (Settings → SSH keys).
+  4. Verify: `ssh -T git@github.com` should greet you. (Until then, an on-disk
+     `~/.ssh/id_ed25519` still carries git auth, since SSH offers it alongside the agent.)
 - **Safari** → Settings → Advanced → "Show features for web developers" (the Develop menu
   can't be enabled via `defaults` — sandboxed).
 - **System Settings → Lock Screen** — confirm "Require password after sleep" is set.
