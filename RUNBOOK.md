@@ -146,6 +146,11 @@ git config --global push.autoSetupRemote true
 - **System Settings → Lock Screen** — confirm "Require password after sleep" is set.
 - Grant permissions when first launching: **Raycast, Hammerspoon, espanso** need
   Accessibility / Input Monitoring / Automation (System Settings → Privacy & Security).
+- **Hammerspoon / Universal Control** — `~/.hammerspoon/init.lua` is chezmoi-managed. It
+  binds **⌃⌥⌘U** to reset a trapped Universal Control cursor (`killall -9 UniversalControl`;
+  also available as the `ucfix` script on PATH). Launch Hammerspoon once and grant it
+  Accessibility (above) on **each** Mac for the hotkey to fire. (Universal Control requires
+  Handoff ON, so don't run `handoff off` on a Mac you drive/share input with.)
 - Sign into apps: **Slack, Arc/Zen, Obsidian, Reeder, Things**, etc.
 - **espanso**: `espanso start` / grant Accessibility; **zerotier-one**: approve the system
   extension if prompted.
