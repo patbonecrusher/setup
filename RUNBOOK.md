@@ -146,6 +146,11 @@ git config --global push.autoSetupRemote true
 - **System Settings → Lock Screen** — confirm "Require password after sleep" is set.
 - Grant permissions when first launching: **Raycast, Hammerspoon, espanso** need
   Accessibility / Input Monitoring / Automation (System Settings → Privacy & Security).
+- **Karabiner-Elements** — `~/.config/karabiner/karabiner.json` is chezmoi-managed and maps
+  **Caps Lock → Hyper (⌃⌥⌘) held / Escape tapped** (so Caps+G/S/U trigger the Hammerspoon
+  hotkeys). On first launch, approve its **driver (system extension)** and **Input Monitoring**
+  (System Settings → Privacy & Security) — the driver can't be enabled via script; the rule
+  activates once it loads.
 - **Hammerspoon / Universal Control** — `~/.hammerspoon/init.lua` is chezmoi-managed. It
   binds **⌃⌥⌘U** to reset a trapped Universal Control cursor (`killall -9 UniversalControl`;
   also available as the `ucfix` script on PATH). Launch Hammerspoon once and grant it
