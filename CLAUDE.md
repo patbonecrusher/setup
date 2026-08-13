@@ -43,6 +43,12 @@ Live in **`setup/macos/defaults.sh`** (NOT chezmoi). Edit there, run the relevan
 - **tmux** config: `dotfiles/dot_config/tmux/tmux.conf` (prefix is `C-b`, NOT ⌘b — Ghostty uses ⌘b, so the two don't collide). Reload/edit binds (`C-b r` / `C-b M`) point at `~/.config/tmux/tmux.conf` (there is no `~/.tmux.conf`). Pane bg is `default` so the Ghostty theme shows through — **never re-add a hardcoded `window-style`/`window-active-style` bg**. Modern settings in place: truecolor (`terminal-features RGB`), `allow-passthrough on` (yazi image previews), `set-clipboard on` (OSC52), `focus-events`, base-index 1.
 - **tmux plugins** via TPM (`C-b I` to install): resurrect + **continuum** (`@continuum-restore on` = auto-save/restore), **tmux-yank**, **vim-tmux-navigator**. The last pairs with the nvim plugin in `dot_config/nvim/lua/plugins/tmux-navigator.lua` so `C-h/j/k/l` flows between nvim splits and tmux panes (overrides LazyVim's window-only maps).
 
+## Claude Code (`~/.claude`)
+
+- Chezmoi manages **only two files** under `~/.claude` — `dot_claude/settings.json` (→ `~/.claude/settings.json`) and `dot_claude/executable_statusline.sh` (→ `~/.claude/statusline.sh`). The rest of `~/.claude` (`.credentials.json`, `history.jsonl`, `projects/`, …) is **deliberately unmanaged** — never add it to the **public** dotfiles repo.
+- The **status line** (`statusLine` block in `settings.json`) runs `statusline.sh`, which shows the model + context-window usage from Claude Code's stdin JSON (`context_window.used_percentage` / `context_window_size`). Read at **startup** — restart Claude Code to pick up changes.
+- **Drift caveat:** changing settings via **`/config`** (theme, model, …) writes the live `~/.claude/settings.json`, which then diverges from the chezmoi source and is reverted on the next `chezmoi apply`. Mirror such changes into `dotfiles/dot_claude/settings.json`.
+
 ## Environment quirks (important for running shell commands)
 
 - Shells may print `zoxide: detected a possible configuration issue` (harmless) and previously `_alts_offer: command not found`. The latter is **fixed** (the `tool-alts.zsh` wrappers for `cat`/`du`/`ps`/`top` now fall back to the real command when `_alts_offer` isn't in scope) — but shells started *before* the fix keep the old inherited wrappers until restarted. In Bash tool calls it's still safe to start with `precmd_functions=(); preexec_functions=()` and pipe through `grep -vi 'zoxide\|_ZO_DOCTOR\|_alts_offer'` to keep output clean.
