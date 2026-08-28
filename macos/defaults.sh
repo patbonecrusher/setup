@@ -90,6 +90,13 @@ defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 # NOTE: three-finger DRAG is intentionally NOT enabled — it conflicts with the
 # three-finger swipe-up for Mission Control (macOS makes them mutually exclusive,
 # bumping Mission Control to a four-finger swipe). Leave it off.
+# App Exposé: swipe DOWN with three fingers to show all windows of the current
+# app. `showAppExposeGestureEnabled` is the on/off switch; the finger count comes
+# from TrackpadThreeFingerVertSwipeGesture (=2, already set for Mission Control's
+# three-finger swipe-up, which this shares). Takes effect after logout/login.
+defaults write com.apple.dock showAppExposeGestureEnabled -bool true
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerVertSwipeGesture -int 2
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerVertSwipeGesture -int 2
 
 ###############################################################################
 log "Safari: developer settings"
