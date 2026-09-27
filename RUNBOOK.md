@@ -128,6 +128,8 @@ git config --global push.autoSetupRemote true
 ## 7. Manual GUI follow-ups 🖱️
 
 - **1Password** — open and sign in (unlocks credentials; optionally enable the SSH agent).
+  Then Settings → General → Keyboard Shortcuts → set **Show Quick Access** to **⌃⌘Space** —
+  the default ⇧⌘Space collides with Visual Intelligence in macOS 27.
 - **Secretive** (SSH keys in the Secure Enclave) — manual, since `~/.ssh/config` is **not**
   in the dotfiles repo (kept local; see `private_dot_ssh/` in the gitignore):
   1. Launch Secretive → create a new key (generated in the Secure Enclave, never exported).
