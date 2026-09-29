@@ -53,6 +53,18 @@ ensure_clt() {
   fi
 }
 
+# 1b. Rosetta 2 — needed for Intel-only apps (e.g. Steam games such as Stardew
+#     Valley). Not present after a clean install or some major-version upgrades.
+#     macOS 27 is the last release that ships it.
+ensure_rosetta() {
+  if pgrep -qx oahd || arch -x86_64 /usr/bin/true >/dev/null 2>&1; then
+    log "Rosetta 2 present"
+  else
+    log "Installing Rosetta 2…"
+    softwareupdate --install-rosetta --agree-to-license || warn "Rosetta install failed"
+  fi
+}
+
 # 2. Homebrew — package manager. Needs sudo once to create /opt/homebrew.
 ensure_brew() {
   if [ -x /opt/homebrew/bin/brew ]; then
@@ -92,6 +104,7 @@ ensure_chezmoi() {
 
 main() {
   ensure_clt
+  ensure_rosetta
   ensure_brew
   ensure_tools
   ensure_chezmoi

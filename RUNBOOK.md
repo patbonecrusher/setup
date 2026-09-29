@@ -58,7 +58,8 @@ git clone https://github.com/patbonecrusher/setup ~/Projects/mac-setup/setup   #
 ~/Projects/mac-setup/setup/bootstrap.sh
 ```
 
-Installs Xcode Command Line Tools (if missing), Homebrew (prompts for your **password**),
+Installs Xcode Command Line Tools (if missing), Rosetta 2 (for Intel-only apps like Steam
+games), Homebrew (prompts for your **password**),
 `chezmoi` + `gh`, then `chezmoi init patbonecrusher` (clones dotfiles source **without
 applying**). Do **not** run with `sudo`.
 
